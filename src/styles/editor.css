@@ -1,0 +1,18 @@
+input {
+  outline: 0;
+}
+
+input::placeholder {
+  color: #ddd;
+}
+
+.lotion_contents {
+  padding: 10px;
+}
+
+.lotion_title {
+  width: 100%;
+  border: 0;
+  font-size: 32px;
+  border-bottom: 1px solid #999;
+}
