@@ -16,3 +16,6 @@ input::placeholder {
   font-size: 32px;
   border-bottom: 1px solid #999;
 }
+.DraftEditor-root {
+  border: 1px solid #ddd;
+}

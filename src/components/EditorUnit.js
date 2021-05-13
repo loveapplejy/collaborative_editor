@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
-import { Editor, EditorState } from 'draft-js';
+import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 
 import '../styles/editor.css';
 import 'draft-js/dist/Draft.css';
+import { editorsRef } from '../store/firebase';
 
-function EditorUnit({ ...editorProps }) {
-  console.log(editorProps);
-  const currentEditorState = EditorState.createEmpty();
+function EditorUnit({ initContentState, id, ...editorProps }) {
+  const currentEditorState = initContentState
+    ? EditorState.createWithContent(convertFromRaw(initContentState))
+    : EditorState.createEmpty();
 
   const [editorState, setEditorState] = useState(currentEditorState);
 
@@ -14,6 +16,12 @@ function EditorUnit({ ...editorProps }) {
 
   const handleChange = (state) => {
     setEditorState(state);
+
+    const editorRef = editorsRef.doc(id);
+
+    const currentContent = state.getCurrentContent();
+    let raw = convertToRaw(currentContent);
+    editorRef.set({ list: raw });
   };
 
   return (

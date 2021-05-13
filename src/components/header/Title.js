@@ -1,7 +1,15 @@
 import React from 'react';
 
-function Title() {
-  return <input type="text" className="lotion_title" placeholder="Untitled" />;
+function Title({ title, setTitle, handleSetTitle }) {
+  return (
+    <input
+      type="text"
+      className="lotion_title"
+      placeholder="Untitled"
+      value={title}
+      onChange={handleSetTitle}
+    />
+  );
 }
 
-export default Title;
+export default React.memo(Title);
