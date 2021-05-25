@@ -1,7 +1,5 @@
 import React from 'react';
-import 'firebase/firestore';
 import EditorContainer from './components/EditorContainer';
-
 import './styles/editor.css';
 
 export const styles = {
@@ -26,8 +24,6 @@ export const styles = {
 };
 
 function App() {
-  // db.collection('pages').doc().set({ title: 'set title' });
-
   return (
     <div style={styles.root}>
       <div style={styles.editor}>
